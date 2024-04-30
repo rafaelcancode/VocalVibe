@@ -1,3 +1,12 @@
+$(document).ready(function() {
+    var btn = $(".button");
+    btn.click(function() {
+      btn.toggleClass("paused");
+      return false;
+    });
+  });
+
+
 function togglePlayPause() {
     var audio = document.getElementById("audio-player");
     if (audio.paused) {
@@ -17,27 +26,6 @@ function pauseAudio() {
     var audio = document.getElementById("audio-player");
     audio.pause();
     document.getElementById("play_btn").innerText = "Play";
-}
-
-function checkAnswer() {
-    // Get the user's answer from the input field
-    var userAnswer = document.getElementById("first_question").value.toLowerCase();
-    
-    // Check if the user's answer is correct
-    if (userAnswer === "badblood" || userAnswer === "bad blood") {
-        alert("Correct!");
-    } else {
-        alert("Incorrect!");
-    }
-}
-
-function checkSecondAnswer() {
-    var userAnswer2 = document.getElementById("second_question").value.toLowerCase().trim();
-    if (userAnswer2 === betty) {
-        alert("Correct!");
-    } else {
-        alert("Incorrect");
-    }
 }
 
 function nextPage() {
