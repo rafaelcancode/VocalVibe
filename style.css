@@ -1,7 +1,6 @@
 body {
     justify-content: center;
     display: flex;
-    justify-content: center;
     align-items: center;
     height: 100vh;
     margin: 0;
@@ -26,3 +25,43 @@ div.box1 {
     right: 10px; /* Adjust right spacing as needed */
     cursor: pointer;
 }
+  
+  .player {
+    background: none;
+    width: 50px;
+    height: 50px;
+    border: solid 5px #fff;
+    border-radius: 100%;
+    position: relative; 
+    text-indent:-9999px;
+    box-shadow: 1px 1px 3px #999999;
+  }
+  
+  .player span {
+    width: 0;
+    height: 0;
+    border-top: 15px solid transparent;
+    border-left: 20px solid #fff;
+    border-bottom: 15px solid transparent;
+    position:absolute;
+    top:20%;
+    left:36%;    
+  }
+  
+  .player:hover{
+    background:#4ccaea;
+    cursor:pointer;
+    opacity:0.8;
+    border:none;
+  }
+  
+  .player:hover span{
+    top:25%;
+    left:38%;
+  }
+
+  #play_btn.play {
+    border-style: solid;
+  border-width: 37px 0 37px 60px;
+}
+  
