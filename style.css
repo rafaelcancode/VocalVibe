@@ -65,3 +65,11 @@ div.box1 {
   border-width: 37px 0 37px 60px;
 }
   
+#answer_btn, #first_quesion {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.hidden {
+  display: none;
+}
