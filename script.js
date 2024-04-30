@@ -89,6 +89,20 @@ function pauseAudio(audio) {
   document.getElementById("play_btn").innerText = "Play";
 }
 
+function showNextQuestion(questionNumber) {
+  var currentQuestion = document.querySelector(
+    '.box1:not([style="display: none;"])'
+  );
+  var nextQuestion = document.querySelector(
+    ".box1:nth-of-type(" + questionNumber + ")"
+  );
+
+  if (currentQuestion && nextQuestion) {
+    currentQuestion.style.display = "none";
+    nextQuestion.style.display = "block";
+  }
+}
+
 /* function checkAnswer(questionNumber) {
   var answer = document
     .getElementById("answer" + questionNumber)
