@@ -103,72 +103,9 @@ function showNextQuestion(questionNumber) {
   }
 }
 
-/* function checkAnswer(questionNumber) {
-  var answer = document
-    .getElementById("answer" + questionNumber)
-    .value.toLowerCase();
-  var correctAnswer;
-
-  // Set correct answer based on the question number
-  switch (questionNumber) {
-    case 1:
-      correctAnswer = ["bad blood", "badblood"];
-      break;
-    case 2:
-      correctAnswer = "betty";
-      break;
-    case 3:
-      correctAnswer = "blank space";
-      break;
-    case 4:
-      correctAnswer = "Fearless";
-      break;
-    case 5:
-      correctAnswer = "Trouble";
-      break;
-    default:
-      correctAnswer = "";
-  }
-
-  // Check if the answer is correct
-  if (Array.isArray(correctAnswer)) {
-    if (correctAnswer.includes(answer)) {
-      alert("Correct!");
-    } else {
-      alert("Incorrect!");
-    }
-  } else {
-    if (answer === correctAnswer) {
-      alert("Correct!");
-    } else {
-      alert("Incorrect!");
-    }
-  }
-}
-
-document.getElementById("submitBtn1").addEventListener("click", function () {
-  checkAnswer(1); // Call the checkAnswer function for question 1 when the button is clicked
-});
-
-document.getElementById("submitBtn2").addEventListener("click", function () {
-  checkAnswer(2); // Call the checkAnswer function for question 2 when the button is clicked
-});
-
-document.getElementById("submitBtn3").addEventListener("click", function () {
-  checkAnswer(3); // Call the checkAnswer function for question 3 when the button is clicked
-});
-
-document.getElementById("submitBtn4").addEventListener("click", function () {
-  checkAnswer(4); // Call the checkAnswer function for question 4 when the button is clicked
-});
-
-document.getElementById("submitBtn5").addEventListener("click", function () {
-  checkAnswer(5); // Call the checkAnswer function for question 5 when the button is clicked
-});
- */
-
 function checkAnswer(questionNumber, answer) {
   let correctAnswer;
+  let resultPara = document.getElementById("answerEl" + questionNumber);
 
   switch (questionNumber) {
     case 1:
@@ -192,35 +129,54 @@ function checkAnswer(questionNumber, answer) {
 
   if (Array.isArray(correctAnswer)) {
     if (correctAnswer.includes(answer.toLowerCase())) {
-      alert("Correct!");
+      resultPara.textContent = "Correct!";
     } else {
-      alert("Incorrect!");
+      resultPara.textContent = "Incorrect!";
     }
   } else {
     if (answer.toLowerCase() === correctAnswer.toLowerCase()) {
-      alert("Correct!");
+      resultPara.textContent = "Correct!";
     } else {
-      alert("Incorrect!");
+      resultPara.textContent = "Incorrect!";
     }
   }
 }
 
+function fadeOutAndPauseAudio(audio, playBtnId) {
+  var fadeInterval = 0.05; // Adjust this value to control the speed of the fade-out effect
+  var fadeOutInterval = setInterval(function () {
+    if (audio.volume > 0) {
+      audio.volume -= fadeInterval;
+    } else {
+      clearInterval(fadeOutInterval);
+      audio.pause();
+      audio.volume = 1; // Reset volume to avoid issues when playing again
+      document.getElementById(playBtnId).innerText = "Play";
+    }
+  }, 100); // Adjust the interval as needed
+}
+
 document.getElementById("submitBtn1").addEventListener("click", function () {
   checkAnswer(1, document.getElementById("answer1").value);
+  fadeOutAndPauseAudio(document.getElementById("audio-player"), "play_btn");
 });
 
 document.getElementById("submitBtn2").addEventListener("click", function () {
   checkAnswer(2, document.getElementById("answer2").value);
+  fadeOutAndPauseAudio(document.getElementById("audio-player2"), "play_btn2");
 });
 
 document.getElementById("submitBtn3").addEventListener("click", function () {
   checkAnswer(3, document.getElementById("answer3").value);
+  fadeOutAndPauseAudio(document.getElementById("audio-player3"), "play_btn3");
 });
 
 document.getElementById("submitBtn4").addEventListener("click", function () {
   checkAnswer(4, document.getElementById("answer4").value);
+  fadeOutAndPauseAudio(document.getElementById("audio-player4"), "play_btn4");
 });
 
 document.getElementById("submitBtn5").addEventListener("click", function () {
   checkAnswer(5, document.getElementById("answer5").value);
+  fadeOutAndPauseAudio(document.getElementById("audio-player5"), "play_btn5");
 });
