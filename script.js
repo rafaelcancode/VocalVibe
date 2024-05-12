@@ -1,3 +1,6 @@
+const scoreElement = document.getElementById("score");
+let score = 0;
+
 document.addEventListener("DOMContentLoaded", function () {
   function nextPage() {
     window.location.href = "answeringpage.html";
@@ -130,12 +133,16 @@ function checkAnswer(questionNumber, answer) {
   if (Array.isArray(correctAnswer)) {
     if (correctAnswer.includes(answer.toLowerCase())) {
       resultPara.textContent = "Correct!";
+      score++;
+      scoreElement.textContent = score;
     } else {
       resultPara.textContent = "Incorrect!";
     }
   } else {
     if (answer.toLowerCase() === correctAnswer.toLowerCase()) {
       resultPara.textContent = "Correct!";
+      score++;
+      scoreElement.textContent = score;
     } else {
       resultPara.textContent = "Incorrect!";
     }
